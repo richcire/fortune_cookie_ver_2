@@ -17,7 +17,7 @@ class MessageContainer extends StatefulWidget {
 
 class _MessageContainerState extends State<MessageContainer> with TickerProviderStateMixin {
   late final AnimationController controller = AnimationController(
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 5),
     vsync: this,
   );
   late final Animation<double> _animation = CurvedAnimation(
@@ -26,7 +26,6 @@ class _MessageContainerState extends State<MessageContainer> with TickerProvider
   );
 
   final player = AudioCache();
-
   @override
   void dispose() {
     controller.dispose();
@@ -34,6 +33,8 @@ class _MessageContainerState extends State<MessageContainer> with TickerProvider
   }
   @override
   Widget build(BuildContext context) {
+
+    //애니매이션 한번만 진행
     controller.forward();
     player.play('page_turn.wav');
     return Container(
